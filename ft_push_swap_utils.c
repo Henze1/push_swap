@@ -6,7 +6,7 @@
 /*   By: hpodratc <hpodratc@student.42yerevan.am>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 13:43:11 by hpodratc          #+#    #+#             */
-/*   Updated: 2025/04/16 14:45:27 by hpodratc         ###   ########.fr       */
+/*   Updated: 2025/04/30 15:21:14 by hpodratc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ int *separate_words(char *str[], const int size)
     if (!words)
         return (NULL);
     ++str;
-    i = 1;
-    while (i < size)
+    i = 0;
+    while (i < size - 1)
     {
-        words[i-1] = ft_atoi(str[i]);
+        words[1] = ft_atoi(str[i]);
         ++i;
     }
     return words;
