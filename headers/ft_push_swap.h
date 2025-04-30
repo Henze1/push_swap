@@ -12,10 +12,10 @@
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# include "../ft_printf/ft_printf.h"
 # include "../Libft/libft.h"
+# include <stdlib.h>
 
-
+int *separate_words(char *str[], const int size);
 
 
 #endif

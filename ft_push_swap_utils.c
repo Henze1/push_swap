@@ -10,3 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "headers/ft_push_swap.h"
+
+int *separate_words(char *str[], const int size)
+{
+    int i;
+    int *words;
+
+    if (!str)
+        return (NULL);
+    words = (int *)malloc(sizeof(int) * (size - 1));
+    if (!words)
+        return (NULL);
+    ++str;
+    i = 1;
+    while (i < size)
+    {
+        words[i-1] = ft_atoi(str[i]);
+        ++i;
+    }
+    return words;
+}

@@ -1,3 +1,5 @@
+MAKEFLAGS += --no-print-directory
+
 CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
@@ -58,19 +60,19 @@ NAME = libft.a
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(AR) $(NAME) $(OBJ)
+	@$(AR) $(NAME) $(OBJ)
 
 bonus: $(BONUS_OBJ) $(OBJ)
-	$(AR) $(NAME) $(OBJ) $(BONUS_OBJ)
+	@$(AR) $(NAME) $(OBJ) $(BONUS_OBJ)
 
 %.o: %.c libft.h
-	$(CC) -c $(CFLAGS) $^
+	@$(CC) -c $(CFLAGS) $<
 
 clean:
-	rm -f $(OBJ) $(BONUS_OBJ)
+	@rm -f $(OBJ) $(BONUS_OBJ)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 
