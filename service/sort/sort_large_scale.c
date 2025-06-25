@@ -62,44 +62,6 @@ void    radix_sort(t_stack **stack_a, t_stack **stack_b)
     }
 }
 
-void    normalize_stack(t_stack **stack)
-{
-    int i;
-    int stck_size;
-    int *arr;
-    t_stack *current;
-
-    stck_size = size(*stack);
-    if (stck_size == 0) return;
-    arr = (int *)malloc(sizeof(int) * stck_size);
-    if (!arr)
-        exit(1);
-    current = *stack;
-    i = 0;
-    while (i < stck_size)
-    {
-        arr[i++] = current->number;
-        current = current->next;
-    }
-    merge_sort(arr, 0, stck_size - 1);
-    current = *stack;
-    while (current)
-    {
-        i = 0;
-        while (i < stck_size)
-        {
-            if (current->number == arr[i])
-            {
-                current->index = i;
-                break;
-            }
-            ++i;
-        }
-        current = current->next;
-    }
-    free(arr);
-}
-
 void    merge_sort(int *arr, int left, int right)
 {
     int middle;

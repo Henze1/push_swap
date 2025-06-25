@@ -27,4 +27,4 @@ void    pop(t_stack **stack);
 t_stack *tail(t_stack **stack);
 int size(t_stack *stack);
 
-#endif //STACK_UTILS_H
+#endif

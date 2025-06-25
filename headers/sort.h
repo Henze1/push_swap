@@ -19,7 +19,6 @@ void    sort_three_numbers(t_stack **stack);
 void    sort_four_numbers(t_stack **stack_a, t_stack **stack_b);
 void    sort_five_numbers(t_stack **stack_a, t_stack **stack_b);
 void    radix_sort(t_stack **stack_a, t_stack **stack_b);
-void    normalize_stack(t_stack **stack);
 void    merge_sort(int *arr, int left, int right);
 void    merge_halves(int *arr, int left, int middle, int right);
 void    execute_merge(int *arr, int *l_tmp, int *r_tmp, int *vars);

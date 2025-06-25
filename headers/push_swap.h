@@ -22,6 +22,7 @@ char    **shuffle_split(char *str[], const int size);
 int		count_numbers(char **num_arr);
 void    init_stack(t_stack **stack, int *numbers, const int size);
 void    sort(t_stack **stack_a, t_stack **stack_b, const int size);
+void    normalize_stack(t_stack **stack);
 void    free_stack(t_stack **stack);
 
 #endif

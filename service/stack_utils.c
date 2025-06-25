@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../headers/stack_utils.h"
-#include "../libft/libft.h"
 
 t_stack *create_stack(int number)
 {

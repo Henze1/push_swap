@@ -12,7 +12,6 @@
 
 #include "../headers/push_swap.h"
 #include "../headers/stack_utils.h"
-#include "../headers/operations.h"
 #include "../headers/sort.h"
 
 int push_swap(char *str[], const int size) {
