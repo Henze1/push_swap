@@ -1,40 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_main.c                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hpodratc <hpodratc@student.42yerevan.am>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 15:54:40 by hpodratc          #+#    #+#             */
-/*   Updated: 2025/04/30 15:21:16 by hpodratc         ###   ########.fr       */
+/*   Created: 2025/05/07 12:25:43 by hpodratc          #+#    #+#             */
+/*   Updated: 2025/06/16 00:17:21 by hpodratc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers/ft_push_swap.h"
+#include "headers/push_swap.h"
+#include "headers/validation.h"
 
 int	main(int argc, char *argv[])
 {
-//    int *numbers;
-    int i;
+	int	i;
+	int	size;
+	char	**num_array;
 
     if (argc < 2)
-		return (0);
-//    numbers = separate_words(argv, argc);
-//    i = 0;
-//    while (i < argc - 1)
-//    {
-//        ft_putnbr_fd(numbers[i], 1);
-//		ft_putchar_fd(' ', 1);
-//        ++i;
-//    }
-//    free(numbers);
-
-    i = 0;
-    while (i < argc)
-    {
-    	ft_putstr_fd(argv[i], 1);
-        ft_putchar_fd(' ', 1);
-    	++i;
-    }
+		return (1);
+	--argc;
+	++argv;
+	num_array = shuffle_split(argv, argc);
+	size = count_numbers(num_array);
+    if (!is_valid(num_array, size))
+    	return (ft_putendl_fd("Error", 1), 1);
+    push_swap(num_array, size);
+	i = 0;
+	while (i < size)
+	{
+		free(num_array[i]);
+		++i;
+	}
+	free(num_array);
     return (0);
 }

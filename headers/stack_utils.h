@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push_swap_utils.c                               :+:      :+:    :+:   */
+/*   stack_utils.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hpodratc <hpodratc@student.42yerevan.am>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/16 13:43:11 by hpodratc          #+#    #+#             */
-/*   Updated: 2025/04/30 15:21:14 by hpodratc         ###   ########.fr       */
+/*   Created: 2025/06/16 00:12:09 by hpodratc          #+#    #+#             */
+/*   Updated: 2025/06/16 00:14:20 by hpodratc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers/ft_push_swap.h"
+#ifndef STACK_UTILS_H
+# define STACK_UTILS_H
+# include <stdlib.h>
 
-int *separate_words(char *str[], const int size)
+typedef struct  s_stack
 {
-    int i;
-    int *words;
+    int number;
+    int index;
+    struct s_stack *next;
+} t_stack;
 
-    if (!str)
-        return (NULL);
-    words = (int *)malloc(sizeof(int) * (size - 1));
-    if (!words)
-        return (NULL);
-    ++str;
-    i = 0;
-    while (i < size - 1)
-    {
-        words[1] = ft_atoi(str[i]);
-        ++i;
-    }
-    return words;
-}
+t_stack *create_stack(int number);
+void    push(t_stack **stack, t_stack *node);
+void    pop(t_stack **stack);
+t_stack *tail(t_stack **stack);
+int size(t_stack *stack);
+
+#endif //STACK_UTILS_H
