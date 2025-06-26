@@ -12,22 +12,6 @@
 
 #include "../../headers/sort.h"
 
-t_stack *find_max(t_stack **stack)
-{
-    t_stack *max;
-    t_stack *tmp;
-
-    max = *stack;
-    tmp = (*stack)->next;
-    while (tmp)
-    {
-        if (tmp->number > max->number)
-            max = tmp;
-        tmp = tmp->next;
-    }
-    return (max);
-}
-
 t_stack *find_min(t_stack **stack)
 {
     t_stack *min;

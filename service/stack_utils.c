@@ -38,29 +38,6 @@ void    push(t_stack **stack, t_stack *node)
     tmp->next = node;
 }
 
-void    pop(t_stack **stack)
-{
-    t_stack *tmp;
-
-    if (!stack || !*stack)
-        return ;
-    tmp = *stack;
-    *stack = (*stack)->next;
-    free(tmp);
-}
-
-t_stack *tail(t_stack **stack)
-{
-    t_stack *tmp;
-
-    if (!stack || !*stack)
-        return (NULL);
-    tmp = *stack;
-    while (tmp->next)
-        tmp = tmp->next;
-    return (tmp);
-}
-
 int size(t_stack *stack)
 {
     int size;

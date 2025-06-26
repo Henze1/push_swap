@@ -23,8 +23,6 @@ typedef struct  s_stack
 
 t_stack *create_stack(int number);
 void    push(t_stack **stack, t_stack *node);
-void    pop(t_stack **stack);
-t_stack *tail(t_stack **stack);
 int size(t_stack *stack);
 
 #endif
