@@ -15,19 +15,19 @@
 
 int	main(int argc, char *argv[])
 {
-	int	i;
-	int	size;
+	int		i;
+	int		size;
 	char	**num_array;
 
-    if (argc < 2)
+	if (argc < 2)
 		return (1);
 	--argc;
 	++argv;
 	num_array = shuffle_split(argv, argc);
 	size = count_numbers(num_array);
-    if (!is_valid(num_array, size))
-    	return (ft_putendl_fd("Error", 1), 1);
-    push_swap(num_array, size);
+	if (!is_valid(num_array, size))
+		return (ft_putendl_fd("Error", 1), 1);
+	push_swap(num_array, size);
 	i = 0;
 	while (i < size)
 	{
@@ -35,5 +35,5 @@ int	main(int argc, char *argv[])
 		++i;
 	}
 	free(num_array);
-    return (0);
+	return (0);
 }

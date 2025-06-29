@@ -13,104 +13,104 @@
 #include "../../headers/push_swap.h"
 #include "../../headers/validation.h"
 
-int is_valid(char *str[], const int size)
+int	is_valid(char *str[], const int size)
 {
-    int i;
-    char    *new;
+	int		i;
+	char	*new;
 
-    i = 0;
-    while (i < size)
-    {
-        new = trim_space(str[i]);
-        if (!new)
-            return (0);
-        else if (contains_symbol(new) || has_repeated_signs(new))
-            return (0);
-        else if (is_over_int(new) || is_only_space(new))
-            return (0);
-        else if (ft_strlen(new) == 1 && !ft_isdigit(new[0]))
-            return (0);
-        else if (is_symbol_between(new) || is_repeated_number(str))
-            return (0);
-        free(new);
-        ++i;
-    }
-    return (1);
+	i = 0;
+	while (i < size)
+	{
+		new = trim_space(str[i]);
+		if (!new)
+			return (0);
+		else if (contains_symbol(new) || has_repeated_signs(new))
+			return (0);
+		else if (is_over_int(new) || is_only_space(new))
+			return (0);
+		else if (ft_strlen(new) == 1 && !ft_isdigit(new[0]))
+			return (0);
+		else if (is_symbol_between(new) || is_repeated_number(str))
+			return (0);
+		free(new);
+		++i;
+	}
+	return (1);
 }
 
-int contains_symbol(char *str)
+int	contains_symbol(char *str)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (str[i])
-    {
-        if (!ft_isdigit(str[i]) && str[i] != '-' && str[i] != '+'
-            && !((str[i] >= 9 && str[i] <= 13) || str[i] == 32))
-            return (1);
-        ++i;
-    }
-    return (0);
+	i = 0;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]) && str[i] != '-' && str[i] != '+'
+			&& !((str[i] >= 9 && str[i] <= 13) || str[i] == 32))
+			return (1);
+		++i;
+	}
+	return (0);
 }
 
-int has_repeated_signs(char const *s1)
+int	has_repeated_signs(char const *s1)
 {
-    int has_sign;
-    int i;
+	int	has_sign;
+	int	i;
 
-    i = 0;
-    has_sign = 0;
-    while (s1[i])
-    {
-        if (s1[i] == '-' || s1[i] == '+')
-        {
-            if (has_sign)
-                return (1);
-            has_sign = 1;
-        }
-        ++i;
-    }
-    return (0);
+	i = 0;
+	has_sign = 0;
+	while (s1[i])
+	{
+		if (s1[i] == '-' || s1[i] == '+')
+		{
+			if (has_sign)
+				return (1);
+			has_sign = 1;
+		}
+		++i;
+	}
+	return (0);
 }
 
-int is_over_int(char *str)
+int	is_over_int(char *str)
 {
-    long num;
-    int sign;
-    int i;
+	long	num;
+	int		sign;
+	int		i;
 
-    num = 0;
-    sign = 1;
-    i = 0;
-    if (str[i] == '-' || str[i] == '+')
-    {
-        if (str[i] == '-')
-            sign = -1;
-        i++;
-    }
-    while (str[i] >= '0' && str[i] <= '9')
-    {
-        num = num * 10 + (str[i] - '0');
-        i++;
-    }
-    num *= sign;
-    if (num > INT_MAX || num < INT_MIN)
-        return (1);
-    return (0);
+	num = 0;
+	sign = 1;
+	i = 0;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		num = num * 10 + (str[i] - '0');
+		++i;
+	}
+	num *= sign;
+	if (num > INT_MAX || num < INT_MIN)
+		return (1);
+	return (0);
 }
 
-int is_only_space(char const *str)
+int	is_only_space(char const *str)
 {
-    int i;
+	int	i;
 
-    if (!str || !*str)
-        return (1);
-    i = 0;
-    while (str[i])
-    {
-        if (!(str[i] >= 9 && str[i] <= 13) || str[i] == 32)
-            return (0);
-        ++i;
-    }
-    return (1);
+	if (!str || !*str)
+		return (1);
+	i = 0;
+	while (str[i])
+	{
+		if (!(str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+			return (0);
+		++i;
+	}
+	return (1);
 }
