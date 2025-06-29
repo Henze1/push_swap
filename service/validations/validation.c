@@ -16,23 +16,18 @@
 int	is_valid(char *str[], const int size)
 {
 	int		i;
-	char	*new;
 
 	i = 0;
 	while (i < size)
 	{
-		new = trim_space(str[i]);
-		if (!new)
+		if (contains_symbol(str[i]) || has_repeated_signs(str[i]))
 			return (0);
-		else if (contains_symbol(new) || has_repeated_signs(new))
+		else if (is_over_int(str[i]) || is_only_space(str[i]))
 			return (0);
-		else if (is_over_int(new) || is_only_space(new))
+		else if (ft_strlen(str[i]) == 1 && !ft_isdigit(str[i][0]))
 			return (0);
-		else if (ft_strlen(new) == 1 && !ft_isdigit(new[0]))
+		else if (is_symbol_between(str[i]) || is_repeated_number(str))
 			return (0);
-		else if (is_symbol_between(new) || is_repeated_number(str))
-			return (0);
-		free(new);
 		++i;
 	}
 	return (1);

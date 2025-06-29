@@ -12,6 +12,8 @@
 
 #include "../../headers/validation.h"
 
+static long		ft_atol(const char *str);
+
 char	*trim_space(char const *s1)
 {
 	const char	set[] = {9, 10, 11, 12, 13, 32};
@@ -53,7 +55,7 @@ int	is_repeated_number(char **numarr)
 		j = i + 1;
 		while (numarr[j])
 		{
-			if (!ft_strcmp(numarr[i], numarr[j]))
+			if (ft_atol(numarr[i]) == ft_atol(numarr[j]))
 				return (1);
 			++j;
 		}
@@ -74,4 +76,29 @@ int	ft_strcmp(char const *s1, char const *s2)
 		++i;
 	}
 	return (s1[i] - s2[i]);
+}
+
+static long	ft_atol(const char *str)
+{
+	int		i;
+	int		sign;
+	long	result;
+
+	i = 0;
+	sign = 1;
+	result = 0;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			sign *= -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		result = result * 10 + (str[i] - '0');
+		i++;
+	}
+	return (result * sign);
 }
