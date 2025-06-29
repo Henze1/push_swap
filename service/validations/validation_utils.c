@@ -14,17 +14,6 @@
 
 static long		ft_atol(const char *str);
 
-char	*trim_space(char const *s1)
-{
-	const char	set[] = {9, 10, 11, 12, 13, 32};
-	char		*new;
-
-	new = ft_strtrim(s1, set);
-	if (!new)
-		return (NULL);
-	return (new);
-}
-
 int	is_symbol_between(char const *str)
 {
 	int	i;
