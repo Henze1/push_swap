@@ -1,14 +1,13 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-NAME = push_swap
 LIBFT = libft
 LIBFT_A = $(LIBFT)/libft.a
 
 OBJ_DIR = build/objects
 OUTPUT_DIR = build/outputs
 
-TARGET = $(OUTPUT_DIR)/$(NAME)
+NAME = $(OUTPUT_DIR)/push_swap
 LIBFT_OUTPUT = $(OUTPUT_DIR)/libft.a
 
 SRC = main.c \
@@ -33,10 +32,10 @@ HEADERS = headers/push_swap.h \
 
 OBJ = $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRC))
 
-all: $(TARGET)
+all: $(NAME)
 
-$(TARGET): $(OBJ) $(LIBFT_OUTPUT)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT_OUTPUT) -o $(TARGET)
+$(NAME): $(OBJ) $(LIBFT_OUTPUT)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT_OUTPUT) -o $(NAME)
 
 $(LIBFT_OUTPUT): $(LIBFT_A)
 	mkdir -p $(OUTPUT_DIR)
