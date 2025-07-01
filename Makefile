@@ -3,9 +3,13 @@ CFLAGS = -Wall -Wextra -Werror
 
 NAME = push_swap
 LIBFT = libft
-LIBFT_NAME = libft.a
-BUILD_DIR = build/objects
+LIBFT_A = $(LIBFT)/libft.a
+
+OBJ_DIR = build/objects
 OUTPUT_DIR = build/outputs
+
+TARGET = $(OUTPUT_DIR)/$(NAME)
+LIBFT_OUTPUT = $(OUTPUT_DIR)/libft.a
 
 SRC = main.c \
       service/push_swap.c \
@@ -21,18 +25,27 @@ SRC = main.c \
       service/operations/operations_rotate.c \
       service/operations/operations_reverse_rotate.c \
 
-OBJ = $(patsubst %.c, $(BUILD_DIR)/%.o, $(SRC))
+HEADERS = headers/push_swap.h \
+			headers/validation.h \
+			headers/operations.h \
+			headers/stack_utils.h \
+			headers/sort.h \
 
-all: $(NAME)
+OBJ = $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRC))
 
-$(NAME): $(OBJ)
-	make -C $(LIBFT)
+all: $(TARGET)
+
+$(TARGET): $(OBJ) $(LIBFT_OUTPUT)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT_OUTPUT) -o $(TARGET)
+
+$(LIBFT_OUTPUT): $(LIBFT_A)
 	mkdir -p $(OUTPUT_DIR)
-	cp $(LIBFT)/$(LIBFT_NAME) $(OUTPUT_DIR)/
-	make fclean -C $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJ) $(OUTPUT_DIR)/$(LIBFT_NAME) -o $(OUTPUT_DIR)/$(NAME)
+	cp $< $@
 
-$(BUILD_DIR)/%.o: %.c headers/push_swap.h headers/validation.h headers/operations.h headers/stack_utils.h headers/sort.h Makefile
+$(LIBFT_A):
+	make -C $(LIBFT)
+
+$(OBJ_DIR)/%.o: %.c $(HEADERS) Makefile
 	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
@@ -42,7 +55,7 @@ clean:
 
 fclean: clean
 	rm -f $(OUTPUT_DIR)/$(NAME)
-	rm -f $(OUTPUT_DIR)/$(LIBFT_NAME)
+	rm -f $(OUTPUT_DIR)/libft.a
 	make fclean -C $(LIBFT)
 
 re: fclean all
