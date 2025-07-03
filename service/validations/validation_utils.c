@@ -12,8 +12,6 @@
 
 #include "../../headers/validation.h"
 
-static long		ft_atol(const char *str);
-
 int	is_symbol_between(char const *str)
 {
 	int	i;
@@ -67,7 +65,7 @@ int	ft_strcmp(char const *s1, char const *s2)
 	return (s1[i] - s2[i]);
 }
 
-static long	ft_atol(const char *str)
+long	ft_atol(const char *str)
 {
 	int		i;
 	int		sign;

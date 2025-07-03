@@ -72,6 +72,7 @@ int	is_over_int(char *str)
 {
 	long	num;
 	int		sign;
+	int		digit;
 	int		i;
 
 	num = 0;
@@ -85,12 +86,14 @@ int	is_over_int(char *str)
 	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		num = num * 10 + (str[i] - '0');
-		++i;
+		digit = str[i] - '0';
+		if (sign == 1 && (num > (INT_MAX - digit) / 10))
+			return (1);
+		if (sign == -1 && (-num < (INT_MIN + digit) / 10))
+			return (1);
+		num = num * 10 + digit;
+		i++;
 	}
-	num *= sign;
-	if (num > INT_MAX || num < INT_MIN)
-		return (1);
 	return (0);
 }
 
@@ -100,12 +103,9 @@ int	is_only_space(char const *str)
 
 	if (!str || !*str)
 		return (1);
-	i = 0;
-	while (str[i])
-	{
-		if (!(str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+	i = -1;
+	while (str[++i])
+		if (str[i] != 32)
 			return (0);
-		++i;
-	}
 	return (1);
 }

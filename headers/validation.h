@@ -6,7 +6,7 @@
 /*   By: hpodratc <hpodratc@student.42yerevan.am>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 11:46:18 by hpodratc          #+#    #+#             */
-/*   Updated: 2025/06/26 01:39:33 by hpodratc         ###   ########.fr       */
+/*   Updated: 2025/07/03 17:18:03 by hpodratc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ int		is_only_space(char const *str);
 int		is_symbol_between(char const *str);
 int		is_repeated_number(char **numarr);
 int		ft_strcmp(char const *s1, char const *s2);
+long	ft_atol(const char *str);
 
 #endif
